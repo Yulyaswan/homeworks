@@ -16,7 +16,13 @@ console.log(`${arr}`);
 /* spread Function */
 
 var restFunction = (...arg) =>  {
+	  for (var i =0; i < arg.length; i++) {
+		arr[i] = typeof arg[i];
+ 	}
 
+  return `${arr}`;
 }
 
 restFunction("hi", 15, true, "lol", false, 6523);
+console.log(`${arr}`);
+
