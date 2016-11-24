@@ -10,10 +10,8 @@ function argFunction() {
 
 argFunction(15, true, "hi", "lol", 6523, false);
 
-console.log(`${arr}`);
 
-
-/* spread Function */
+/*********** spread Function *************/
 
 var restFunction = (...arg) =>  {
 	  for (var i =0; i < arg.length; i++) {
@@ -24,5 +22,15 @@ var restFunction = (...arg) =>  {
 }
 
 restFunction("hi", 15, true, "lol", false, 6523);
-console.log(`${arr}`);
 
+/**********************************************/
+
+var result="";
+var restFunction = (...arg) =>  {
+  arg.forEach(function(el){
+    result += (typeof el + ",");
+  });
+  return result;
+}
+
+restFunction(56, null, NaN, "hi", 15, true, "lol", false, 6523);
