@@ -1,5 +1,5 @@
 let str = null,
-    vowel = ["A", "a", "E", "e", "I", "i", "O", "o", "U", "u", "Y", "y"];
+     vowels = ["a", "e", "i", "o", "u", "y"];
 
 do { 
 	str = prompt("type you string");
@@ -10,17 +10,7 @@ do {
 
 } while(str < "A" || str > "z");
 
+let result = str.split("").filter(el => !vowels.includes(el.toLowerCase())).join("");
+console.log(result);
 
-let newFunc = function() {
 
-	for (var i=0; i < vowel.length; i++) {
-		while(str.indexOf(vowel[i]) != -1) {
-		 str = str.replace(vowel[i], '');
-		}
-	}
-
-	console.log(str);
-
-}
-
-newFunc(str);

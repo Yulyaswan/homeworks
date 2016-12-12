@@ -25,12 +25,6 @@ restFunction("hi", 15, true, "lol", false, 6523);
 
 /**********************************************/
 
-var result="";
-var restFunction = (...arg) =>  {
-  arg.forEach(function(el){
-    result += (typeof el + ",");
-  });
-  return result;
-}
+let restFunc = (…args) => args.map(arg => typeof arg).join(", ");
 
 restFunction(56, null, NaN, "hi", 15, true, "lol", false, 6523);
