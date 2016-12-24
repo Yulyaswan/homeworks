@@ -81,7 +81,4 @@
 			}
 		}
 	}//changeObj()
-
-	console.log(users);
-
 })();
