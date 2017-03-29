@@ -39,11 +39,16 @@ app.post('/book', (req, res) =>{
 	res.send(book);
 });
 
-app.get('/book/id', (req,res) => {
+app.get('/book/:id', (req,res) => {
 	let bookId = parseFloat(req.params.id, 10);
-	console.log(bookId);
 	let index = books.findIndex(book => book.id === bookId);
-	console.log(index);
+	res.send(books[index]);
+});
+
+app.delete("/book/:id", (req, res) => {
+	let bookId = parseFloat(req.params.id, 10);
+	let index = books.findIndex(book => book.id === bookId);
+	books.splice(index, 1);
 	res.send(books[index]);
 });
 

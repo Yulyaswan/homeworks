@@ -4,7 +4,8 @@
 		singleBook = document.querySelector(".single-book"),
 		mainPage = document.querySelector("#main-page"),
 		addBook = document.querySelector("#addBook"),
-		form = document.querySelector(".add-book-container form");
+		form = document.querySelector(".add-book-container form"),
+		remove = document.querySelector("#remove");
 
 
 	fetch("/books").
@@ -58,6 +59,7 @@
 	mainPage.addEventListener("click", showBooks);
 	form.addEventListener("submit", addNewBook);
 	booksContainer.addEventListener("click", singleBookPage);
+	remove.addEventListener("click", removeBook);
 
 	function showForm(ev) {
 		ev.preventDefault();
@@ -112,19 +114,47 @@
 		booksContainer.hidden = true;
 		singleBook.hidden = false;
 
+		let bookId = ev.target.getAttribute('data-id');
+
+		fetch(`/book/${bookId}`).
+			then(res => res.json()).
+			then(res => {
+				console.log(res);
+				renderSingleBook(res);
+			}).
+			catch(e => console.error(e));
+	}
+
+	function renderSingleBook(ev) {
+
 		let singleTitle = document.querySelector('.single-title'),
 			singleDescr = document.querySelector('.single-description'),
 			singleAuthor = document.querySelector('.single-author'),
-			singlePublished = document.querySelector('.single-published');
+			singlePublished = document.querySelector('.single-published'),
+			id = document.querySelector(".id");
 
-		let bookId = ev.target.getAttribute('data-id');
+		singleTitle.textContent = ev.title;
+		singleDescr.textContent = ev.description;
+		singleAuthor.textContent = ev.author;
+		singlePublished.textContent = ev.published;
+		id.textContent = ev.id;
+	}
+
+	function removeBook (ev) {
+		ev.preventDefault();
+
+		let bookId = document.querySelector(".id").innerHTML;
 		console.log(bookId);
 
-		fetch(`/book/${bookId}`).
-		then(res => res.json()).
-		then(res => {
-			console.log(res);
+		fetch(`/book/${bookId}`, {
+			method: "DELETE"
 		}).
+		then(res => res.json()).
+		then(res => console.log(res)).
 		catch(e => console.error(e));
+
+		addBookContainer.hidden = true;
+		booksContainer.hidden = false;
+		singleBook.hidden = true;
 	}
 })();

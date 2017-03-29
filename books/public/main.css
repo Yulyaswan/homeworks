@@ -60,7 +60,7 @@ body {
 	height: 70px;
 }
 
-.add-book-container form button {
+button {
     display: inline-block;
     width: 200px;
     height: 25px;
@@ -73,6 +73,6 @@ body {
     color: #fff;
 }
 
-.add-book-container form button:hover {
+button:hover {
 	background: #880505;
 }
