@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Books server</title>
+
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div class="link-container">
+	<a href="/index.html" id="main-page">Books</a>
+	<a href="/add-new-book.html" id="addBook">Add new book</a>
+</div>
+
+<div class="books-container">
+
+</div>
+
+<div class="add-book-container" hidden="hidden">
+	<h2>Fill in the form to add a new book</h2>
+
+	<form action="/book" method="POST">
+		<label for="title">Title:</label>
+		<input type="text" id="title" name="title" required>
+		<br>
+		<label for="description">Description:</label>
+		<textarea name="description" id="description"></textarea>
+		<br>
+		<label for="author">Author:</label>
+		<input type="text" id="author" name="author" required>
+		<br>
+		<label for="published">Published:</label>
+		<input type="number" id="published" name="published" required>
+		<br>
+
+		<button>Add new book</button>
+	</form>
+</div>
+
+<div class="single-book" hidden="hidden" method="POST">
+	<h2 class="single-title"></h2>
+	<p class="sincle-description"></p>
+	<p class="sincle-author"></p>
+	<p class="single-published"></p>
+</div>
+
+
+<script src="custom.js"></script>	
+</body>
+</html>
